@@ -1,19 +1,33 @@
+import 'package:elkaweer/provider/news_provider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:elkaweer/provider/prefs_provider.dart';
 import 'package:elkaweer/resources/routes_manager.dart';
 import 'package:elkaweer/screens/splash_screen/splash_screen.dart';
-import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) {
+            final prefsProvider = PrefsProvider();
+            prefsProvider.initPrefs(); // Initialize inside provider
+            return prefsProvider;
+          },
+        ),
+        ChangeNotifierProvider(create: (_) => NewsProvider()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(

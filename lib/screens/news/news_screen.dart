@@ -1,3 +1,5 @@
+import 'package:elkaweer/resources/strings_manager.dart';
+import 'package:elkaweer/screens/news/news_list.dart';
 import 'package:flutter/material.dart';
 
 class NewsScreen extends StatelessWidget {
@@ -5,8 +7,12 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text('News Screen')),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(AppStrings.footballNews),
+        centerTitle: true,
+      ),
+      body: const NewsList(),
     );
   }
 }

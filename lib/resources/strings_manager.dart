@@ -7,4 +7,7 @@ class AppStrings {
   static const String matches = 'Matches';
   static const String transfers = 'Transfers';
   static const String settings = 'Settings';
+
+  // News Screen
+  static const String footballNews = "Football News";
 }
