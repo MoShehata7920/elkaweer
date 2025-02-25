@@ -10,4 +10,12 @@ class AppStrings {
 
   // News Screen
   static const String footballNews = "Football News";
+
+  // Matches Screen
+  static const String liveMatches = "Live Matches";
+  static const String upcomingMatches = "Upcoming Matches";
+  static const String vs = "VS";
+  static const String score = "Score:";
+  static const String time = "Time:";
+  static const String dateAndTime = "Date & Time:";
 }

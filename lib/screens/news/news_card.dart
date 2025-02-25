@@ -1,3 +1,4 @@
+import 'package:elkaweer/resources/icons_manager.dart';
 import 'package:flutter/material.dart';
 
 class NewsCard extends StatelessWidget {
@@ -27,7 +28,7 @@ class NewsCard extends StatelessWidget {
               imageUrl,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return const Icon(Icons.image_not_supported,
+                return const Icon(AppIcons.imageNotSupported,
                     size: 40, color: Colors.grey);
               },
             ),

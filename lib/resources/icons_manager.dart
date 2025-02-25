@@ -6,4 +6,5 @@ class AppIcons {
   static const match = Icons.sports_soccer_outlined;
   static const transfer = Icons.transfer_within_a_station_outlined;
   static const settings = IconlyBroken.setting;
+  static const imageNotSupported = Icons.image_not_supported;
 }

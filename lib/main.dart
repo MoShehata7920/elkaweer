@@ -1,3 +1,4 @@
+import 'package:elkaweer/provider/match_provider.dart';
 import 'package:elkaweer/provider/news_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +20,7 @@ void main() {
           },
         ),
         ChangeNotifierProvider(create: (_) => NewsProvider()),
+        ChangeNotifierProvider(create: (_) => MatchesProvider()),
       ],
       child: const MyApp(),
     ),
