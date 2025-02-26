@@ -11,23 +11,20 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => NewsProvider()..fetchNews(),
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(AppStrings.footballNews),
-          centerTitle: true,
-        ),
-        body: Consumer<NewsProvider>(
-          builder: (context, provider, child) {
-            if (provider.isLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            return ListView.builder(
+    final newsProvider = Provider.of<NewsProvider>(context, listen: true);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(AppStrings.footballNews),
+        centerTitle: true,
+      ),
+      body: newsProvider.isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
               padding: const EdgeInsets.all(10),
-              itemCount: provider.news.length,
+              itemCount: newsProvider.news.length,
               itemBuilder: (context, index) {
-                final NewsArticle article = provider.news[index];
+                final NewsArticle article = newsProvider.news[index];
                 return NewsCard(
                   title: article.title,
                   source: article.source,
@@ -35,10 +32,7 @@ class NewsScreen extends StatelessWidget {
                   publishedAt: article.publishedAt,
                 );
               },
-            );
-          },
-        ),
-      ),
+            ),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:elkaweer/provider/home_provider.dart';
 import 'package:elkaweer/provider/match_provider.dart';
 import 'package:elkaweer/provider/news_provider.dart';
 import 'package:flutter/material.dart';
@@ -12,20 +13,34 @@ void main() {
   runApp(
     MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
         ChangeNotifierProvider(
           create: (_) {
             final prefsProvider = PrefsProvider();
-            prefsProvider.initPrefs(); // Initialize inside provider
+            prefsProvider.initPrefs();
             return prefsProvider;
           },
         ),
-        ChangeNotifierProvider(create: (_) => NewsProvider()),
-        ChangeNotifierProvider(create: (_) => MatchesProvider()),
+        ChangeNotifierProvider(
+          create: (_) {
+            final newsProvider = NewsProvider();
+            newsProvider.fetchNews();
+            return newsProvider;
+          },
+        ),
+        ChangeNotifierProvider(
+          create: (_) {
+            final matchesProvider = MatchesProvider();
+            matchesProvider.fetchMatches();
+            return matchesProvider;
+          },
+        ),
       ],
       child: const MyApp(),
     ),
   );
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

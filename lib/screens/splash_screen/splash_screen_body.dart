@@ -27,7 +27,7 @@ class _SplashScreenBodyState extends State<SplashScreenBody> {
   }
 
   void navigateToHome() {
-    Timer(const Duration(seconds: 3),
+    Timer(const Duration(seconds: 4),
         () => Navigator.pushReplacementNamed(context, Routes.homeRoute));
   }
 }

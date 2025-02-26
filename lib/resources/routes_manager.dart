@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:elkaweer/provider/home_provider.dart';
 import 'package:elkaweer/resources/strings_manager.dart';
 import 'package:elkaweer/screens/home/home_screen.dart';
 import 'package:elkaweer/screens/splash_screen/splash_screen.dart';
-import 'package:flutter/material.dart';
 
 class Routes {
   static const String splashRoute = '/';
@@ -15,7 +18,12 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (context) => const SplashScreen());
 
       case Routes.homeRoute:
-        return MaterialPageRoute(builder: (context) => const HomeScreen());
+        return MaterialPageRoute(
+          builder: (_) => ChangeNotifierProvider(
+            create: (context) => HomeProvider(),
+            child: const HomeScreen(),
+          ),
+        );
 
       default:
         return unDefinedRoute();
