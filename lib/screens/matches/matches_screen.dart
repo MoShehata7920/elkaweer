@@ -13,7 +13,10 @@ class MatchesScreen extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MatchesProvider()..fetchMatches(),
       child: Scaffold(
-        appBar: AppBar(title: const Text(AppStrings.matches)),
+        appBar: AppBar(
+          title: const Text(AppStrings.matches),
+          centerTitle: true,
+        ),
         body: Consumer<MatchesProvider>(
           builder: (context, provider, child) {
             if (provider.isLoading) {

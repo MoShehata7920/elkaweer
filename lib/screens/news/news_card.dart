@@ -3,41 +3,39 @@ import 'package:flutter/material.dart';
 
 class NewsCard extends StatelessWidget {
   final String title;
-  final String subtitle;
+  final String source;
   final String imageUrl;
+  final String publishedAt;
 
   const NewsCard({
     super.key,
     required this.title,
-    required this.subtitle,
+    required this.source,
     required this.imageUrl,
+    required this.publishedAt,
   });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: SizedBox(
-            width: 60,
-            height: 60,
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return const Icon(AppIcons.imageNotSupported,
-                    size: 40, color: Colors.grey);
-              },
-            ),
+          child: Image.network(
+            imageUrl,
+            width: 70,
+            height: 70,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) =>
+                const Icon(AppIcons.imageNotSupported),
           ),
         ),
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text(subtitle, maxLines: 2, overflow: TextOverflow.ellipsis),
+        subtitle: Text("$source | $publishedAt"),
         onTap: () {
-          // TODO: Handle news item tap
+          // TODO: Handle news tap
         },
       ),
     );
