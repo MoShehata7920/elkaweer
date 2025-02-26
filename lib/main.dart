@@ -1,6 +1,7 @@
 import 'package:elkaweer/provider/home_provider.dart';
 import 'package:elkaweer/provider/match_provider.dart';
 import 'package:elkaweer/provider/news_provider.dart';
+import 'package:elkaweer/provider/transfer_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:elkaweer/provider/prefs_provider.dart';
@@ -35,12 +36,16 @@ void main() {
             return matchesProvider;
           },
         ),
+        ChangeNotifierProvider(create: (_) {
+          final transfersProvider = TransfersProvider();
+          transfersProvider.fetchTransfers();
+          return transfersProvider;
+        }),
       ],
       child: const MyApp(),
     ),
   );
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

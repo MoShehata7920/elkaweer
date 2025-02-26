@@ -18,4 +18,7 @@ class AppStrings {
   static const String score = "Score:";
   static const String time = "Time:";
   static const String dateAndTime = "Date & Time:";
+
+  // transfers screen
+  static const String newClub = "New Club";
 }
