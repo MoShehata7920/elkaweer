@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class NewsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.footballNews),
+        title:  const Text(AppStrings.footballNews).tr(),
         centerTitle: true,
       ),
       body: newsProvider.isLoading

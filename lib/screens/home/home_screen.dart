@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:elkaweer/provider/home_provider.dart';
 import 'package:elkaweer/resources/icons_manager.dart';
 import 'package:elkaweer/resources/strings_manager.dart';
 import 'package:elkaweer/screens/matches/matches_screen.dart';
@@ -8,7 +10,6 @@ import 'package:elkaweer/screens/news/news_screen.dart';
 import 'package:elkaweer/screens/settings/settings_screen.dart';
 import 'package:elkaweer/screens/transfers/transfers_screen.dart';
 import 'package:elkaweer/service/utils.dart';
-import 'package:elkaweer/provider/home_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -45,10 +46,10 @@ class HomeScreen extends StatelessWidget {
 
   List<BottomNavigationBarItem> _navBarItems() {
     return [
-      _buildNavBarItem(AppIcons.news, AppStrings.news),
-      _buildNavBarItem(AppIcons.match, AppStrings.matches),
-      _buildNavBarItem(AppIcons.transfer, AppStrings.transfers),
-      _buildNavBarItem(AppIcons.settings, AppStrings.settings),
+      _buildNavBarItem(AppIcons.news, AppStrings.news.tr()),
+      _buildNavBarItem(AppIcons.match, AppStrings.matches.tr()),
+      _buildNavBarItem(AppIcons.transfer, AppStrings.transfers.tr()),
+      _buildNavBarItem(AppIcons.settings, AppStrings.settings.tr()),
     ];
   }
 

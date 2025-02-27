@@ -1,5 +1,7 @@
-import 'package:elkaweer/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+
+import 'package:elkaweer/resources/strings_manager.dart';
 
 class TransferCard extends StatelessWidget {
   final String playerName, newClub, transferFee;
@@ -17,7 +19,7 @@ class TransferCard extends StatelessWidget {
       child: ListTile(
         title: Text(playerName,
             style: const TextStyle(fontWeight: FontWeight.bold)),
-        subtitle: Text("${AppStrings.newClub}: $newClub"),
+        subtitle: Text("${AppStrings.newClub.tr()}: $newClub"),
         trailing: Text(transferFee,
             style: const TextStyle(fontWeight: FontWeight.bold)),
       ),

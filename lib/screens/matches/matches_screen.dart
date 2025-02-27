@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:elkaweer/models/match_model.dart';
 import 'package:elkaweer/provider/match_provider.dart';
 import 'package:elkaweer/resources/strings_manager.dart';
 import 'package:elkaweer/screens/matches/match_card.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class MatchesScreen extends StatelessWidget {
   const MatchesScreen({super.key});
@@ -14,7 +16,7 @@ class MatchesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.matches),
+        title: const Text(AppStrings.matches).tr(),
         centerTitle: true,
       ),
       body: matchesProvider.isLoading
@@ -25,14 +27,14 @@ class MatchesScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(AppStrings.liveMatches,
-                        style: TextStyle(
+                    Text(AppStrings.liveMatches.tr(),
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 10),
                     _buildMatchList(matchesProvider.liveMatches, isLive: true),
                     const SizedBox(height: 20),
-                    const Text(AppStrings.upcomingMatches,
-                        style: TextStyle(
+                    Text(AppStrings.upcomingMatches.tr(),
+                        style: const TextStyle(
                             fontSize: 20, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 10),
                     _buildMatchList(matchesProvider.upcomingMatches),

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
 import 'package:elkaweer/provider/transfer_provider.dart';
 import 'package:elkaweer/resources/strings_manager.dart';
 import 'package:elkaweer/screens/transfers/transfer_card.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class TransfersScreen extends StatelessWidget {
   const TransfersScreen({super.key});
@@ -13,7 +15,7 @@ class TransfersScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppStrings.transfers),
+        title: const Text(AppStrings.transfers).tr(),
         centerTitle: true,
       ),
       body: transfersProvider.isLoading
