@@ -47,4 +47,16 @@ class AppStrings {
   static const String helpSupport = "helpSupport";
   static const String language = "language";
   static const String darkMode = "darkMode";
+
+  // About Screen
+  static const String version = "version";
+  static const String appDescription = "appDescription";
+  static const String developer = "developer";
+  static const String myName = "myName";
+  static const String facebook = "facebook";
+  static const String instagram = "instagram";
+  static String needHelp = "needHelp";
+  static String faq = "faq";
+  static String contactSupport = "contactSupport";
+  static String troubleshoot = "troubleshoot";
 }

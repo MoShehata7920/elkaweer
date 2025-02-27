@@ -17,5 +17,15 @@
     "aboutApp": "About App",
     "helpSupport": "Help & Support",
     "language": "Language",
-    "darkMode": "Dark Mode"
+    "darkMode": "Dark Mode",
+    "version": "Version Number",
+    "appDescription": "Elkaweer is your ultimate destination for all things football! Stay updated with the latest football news, live scores, upcoming matches, and transfer updates—all in one place. Whether you're a casual fan or a die-hard football enthusiast, Elkaweer keeps you connected to the game you love. Fast, reliable, and designed for true football lovers.",
+    "developer":"Developer :",
+    "myName":"Mohamed Shehata Torky",
+    "facebook":"Facebook",
+    "instagram":"Instagram",
+    "needHelp": "Need Help?",
+    "faq": "Frequently Asked Questions",
+    "contactSupport": "Contact Support",
+    "troubleshoot": "Troubleshooting"
   }

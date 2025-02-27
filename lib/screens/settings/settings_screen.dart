@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:elkaweer/resources/routes_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,12 +37,16 @@ class SettingsScreen extends StatelessWidget {
             _buildSettingsOption(
               icon: AppIcons.info,
               title: AppStrings.aboutApp.tr(),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Routes.aboutScreenRoute);
+              },
             ),
             _buildSettingsOption(
               icon: AppIcons.help,
               title: AppStrings.helpSupport.tr(),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, Routes.helpScreenRoute);
+              },
             ),
           ],
         ),
