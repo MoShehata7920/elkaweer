@@ -9,7 +9,6 @@ import 'package:elkaweer/screens/matches/matches_screen.dart';
 import 'package:elkaweer/screens/news/news_screen.dart';
 import 'package:elkaweer/screens/settings/settings_screen.dart';
 import 'package:elkaweer/screens/transfers/transfers_screen.dart';
-import 'package:elkaweer/service/utils.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,7 +23,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
-    final Color bottomNavBarColor = Utils(context).bottomNavBarColor;
 
     return Scaffold(
       body: PageView(
@@ -35,11 +33,10 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: homeProvider.currentIndex,
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.red, 
+        selectedItemColor: Colors.red,
         unselectedItemColor: Colors.grey,
-        backgroundColor: bottomNavBarColor,
         items: _navBarItems(),
-        onTap: homeProvider.changeTab, 
+        onTap: homeProvider.changeTab,
       ),
     );
   }

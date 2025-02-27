@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:elkaweer/provider/language_provider.dart';
+import 'package:elkaweer/provider/theme_provider.dart';
 import 'package:elkaweer/resources/consts_manager.dart';
 import 'package:elkaweer/resources/icons_manager.dart';
 import 'package:elkaweer/resources/languages_manager.dart';
@@ -78,12 +79,16 @@ class SettingsScreen extends StatelessWidget {
   }
 
   Widget _buildDarkModeSetting(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return ListTile(
       leading: const Icon(AppIcons.mode, color: Colors.orange),
       title: Text(AppStrings.darkMode.tr()),
       trailing: Switch(
-        value: false,
-        onChanged: (bool value) {},
+        value: themeProvider.isDarkMode,
+        onChanged: (bool value) {
+          themeProvider.toggleTheme();
+        },
       ),
     );
   }
