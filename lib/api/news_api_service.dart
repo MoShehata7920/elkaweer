@@ -8,7 +8,7 @@ import 'package:elkaweer/resources/consts_manager.dart';
 class NewsApiService {
   static Future<List<Article>> fetchNews() async {
     const String url =
-        "${ApiConstants.baseUrl}?q=football&apiKey=${ApiConstants.newsApiKey}";
+        "${ApiConstants.newsApiBaseUrl}?q=football&apiKey=${ApiConstants.newsApiKey}";
 
     try {
       final response = await http.get(Uri.parse(url));

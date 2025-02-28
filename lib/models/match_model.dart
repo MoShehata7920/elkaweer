@@ -3,13 +3,23 @@ class MatchData {
   final String awayTeam;
   final String? score;
   final String timeOrDate;
-  final bool isLive;
 
   MatchData({
     required this.homeTeam,
     required this.awayTeam,
-    this.score,
+    required this.score,
     required this.timeOrDate,
-    required this.isLive,
   });
+
+  factory MatchData.fromJson(Map<String, dynamic> json) {
+    return MatchData(
+      homeTeam: json["teams"]["home"]["name"] ?? "Unknown",
+      awayTeam: json["teams"]["away"]["name"] ?? "Unknown",
+      score: json["goals"]["home"] != null && json["goals"]["away"] != null
+          ? "${json["goals"]["home"]} - ${json["goals"]["away"]}"
+          : "--",
+      timeOrDate:
+          json["fixture"]["date"] ?? "No Date", // Ensure this is correct
+    );
+  }
 }

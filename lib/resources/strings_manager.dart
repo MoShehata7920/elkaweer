@@ -6,7 +6,7 @@ class AppStrings {
 
   static Future<void> load(String languageCode) async {
     String jsonString =
-        await rootBundle.loadString('assets/lang/$languageCode.json');
+        await rootBundle.loadString('assets/translation/$languageCode.json');
     Map<String, dynamic> jsonMap = json.decode(jsonString);
 
     _localizedStrings =
@@ -32,7 +32,7 @@ class AppStrings {
 
   // Matches Screen
   static const String liveMatches = "liveMatches";
-  static const String upcomingMatches = "upcomingMatches";
+  static const String noMatchesAvailable = "noMatchesAvailable";
   static const String vs = "vs";
   static const String score = "score";
   static const String time = "time";

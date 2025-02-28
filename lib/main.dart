@@ -30,13 +30,7 @@ void main() async {
             },
           ),
           ChangeNotifierProvider(create: (_) => NewsProvider()),
-          ChangeNotifierProvider(
-            create: (_) {
-              final matchesProvider = MatchesProvider();
-              matchesProvider.fetchMatches();
-              return matchesProvider;
-            },
-          ),
+          ChangeNotifierProvider(create: (_) => MatchesProvider()),
           ChangeNotifierProvider(
             create: (_) {
               final transfersProvider = TransfersProvider();
