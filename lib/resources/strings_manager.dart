@@ -41,7 +41,7 @@ class AppStrings {
   // Transfers Screen
   static const String newClub = "newClub";
 
-  //
+  // Settings Screen
   static const String generalSettings = "generalSettings";
   static const String aboutApp = "aboutApp";
   static const String helpSupport = "helpSupport";

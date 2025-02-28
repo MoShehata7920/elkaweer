@@ -11,53 +11,48 @@ import 'package:elkaweer/provider/prefs_provider.dart';
 import 'package:elkaweer/provider/transfer_provider.dart';
 import 'package:elkaweer/resources/consts_manager.dart';
 import 'package:elkaweer/resources/routes_manager.dart';
-import 'package:elkaweer/screens/splash_screen/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => HomeProvider()),
-        ChangeNotifierProvider(
-          create: (_) {
-            final prefsProvider = PrefsProvider();
-            prefsProvider.initPrefs();
-            return prefsProvider;
-          },
-        ),
-        ChangeNotifierProvider(
-          create: (_) {
-            final newsProvider = NewsProvider();
-            newsProvider.fetchNews();
-            return newsProvider;
-          },
-        ),
-        ChangeNotifierProvider(
-          create: (_) {
-            final matchesProvider = MatchesProvider();
-            matchesProvider.fetchMatches();
-            return matchesProvider;
-          },
-        ),
-        ChangeNotifierProvider(create: (_) {
-          final transfersProvider = TransfersProvider();
-          transfersProvider.fetchTransfers();
-          return transfersProvider;
-        }),
-        ChangeNotifierProvider(create: (_) => LanguageProvider()),
-        ChangeNotifierProvider(
-          create: (context) => ThemeProvider(),
-          child: const MyApp(),
-        ),
-      ],
-      child: EasyLocalization(
+    ChangeNotifierProvider(
+      create: (_) => ThemeProvider(),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => HomeProvider()),
+          ChangeNotifierProvider(
+            create: (_) {
+              final prefsProvider = PrefsProvider();
+              prefsProvider.initPrefs();
+              return prefsProvider;
+            },
+          ),
+          ChangeNotifierProvider(create: (_) => NewsProvider()),
+          ChangeNotifierProvider(
+            create: (_) {
+              final matchesProvider = MatchesProvider();
+              matchesProvider.fetchMatches();
+              return matchesProvider;
+            },
+          ),
+          ChangeNotifierProvider(
+            create: (_) {
+              final transfersProvider = TransfersProvider();
+              transfersProvider.fetchTransfers();
+              return transfersProvider;
+            },
+          ),
+          ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        ],
+        child: EasyLocalization(
           path: AppConsts.assetPathLocalization,
           supportedLocales: const [Locale('en'), Locale('ar')],
           fallbackLocale: const Locale('en'),
-          child: const MyApp()),
+          child: const MyApp(),
+        ),
+      ),
     ),
   );
 }
@@ -80,7 +75,6 @@ class MyApp extends StatelessWidget {
         darkTheme: ThemeData.dark(),
         onGenerateRoute: RouteGenerator.getRoute,
         initialRoute: Routes.splashRoute,
-        home: const SplashScreen(),
       );
     });
   }
