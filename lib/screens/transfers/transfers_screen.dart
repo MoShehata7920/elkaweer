@@ -6,31 +6,43 @@ import 'package:elkaweer/provider/transfer_provider.dart';
 import 'package:elkaweer/resources/strings_manager.dart';
 import 'package:elkaweer/screens/transfers/transfer_card.dart';
 
-class TransfersScreen extends StatelessWidget {
+class TransfersScreen extends StatefulWidget {
   const TransfersScreen({super.key});
 
   @override
+  TransfersScreenState createState() => TransfersScreenState();
+}
+
+class TransfersScreenState extends State<TransfersScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      int teamId = 33; // Replace with a valid team ID or get it dynamically
+      Provider.of<TransferProvider>(context, listen: false)
+          .loadTransfers(teamId);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final transfersProvider = Provider.of<TransfersProvider>(context);
+    final provider = Provider.of<TransferProvider>(context);
+    final transfers = provider.transfers;
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppStrings.transfers).tr(),
-        centerTitle: true,
-      ),
-      body: transfersProvider.isLoading
+      appBar: AppBar(title: Text(AppStrings.latestTransfers.tr())),
+      body: provider.isLoading
           ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              padding: const EdgeInsets.all(10),
-              itemCount: transfersProvider.transfers.length,
-              itemBuilder: (context, index) {
-                final transfer = transfersProvider.transfers[index];
-                return TransferCard(
-                    playerName: transfer.playerName,
-                    newClub: transfer.newClub,
-                    transferFee: transfer.transferFee);
-              },
-            ),
+          : transfers.isEmpty
+              ? Center(child: Text(AppStrings.noTransfersAvailable.tr()))
+              : ListView.builder(
+                  itemCount: transfers.length,
+                  itemBuilder: (context, index) {
+                    final transfer = transfers[index];
+
+                    return TransferCard(transfer: transfer);
+                  },
+                ),
     );
   }
 }

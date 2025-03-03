@@ -40,6 +40,10 @@ class AppStrings {
 
   // Transfers Screen
   static const String newClub = "newClub";
+  static const String previousClub = "previousClub";
+  static const String transferDate = "transferDate";
+  static const String latestTransfers = "latestTransfers";
+  static const String noTransfersAvailable = "noTransfersAvailable";
 
   // Settings Screen
   static const String generalSettings = "generalSettings";

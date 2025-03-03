@@ -18,8 +18,7 @@ class MatchData {
       score: json["goals"]["home"] != null && json["goals"]["away"] != null
           ? "${json["goals"]["home"]} - ${json["goals"]["away"]}"
           : "--",
-      timeOrDate:
-          json["fixture"]["date"] ?? "No Date", // Ensure this is correct
+      timeOrDate: json["fixture"]["date"] ?? "No Date",
     );
   }
 }

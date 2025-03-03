@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elkaweer/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -8,6 +7,7 @@ import 'package:elkaweer/provider/language_provider.dart';
 import 'package:elkaweer/provider/match_provider.dart';
 import 'package:elkaweer/provider/news_provider.dart';
 import 'package:elkaweer/provider/prefs_provider.dart';
+import 'package:elkaweer/provider/theme_provider.dart';
 import 'package:elkaweer/provider/transfer_provider.dart';
 import 'package:elkaweer/resources/consts_manager.dart';
 import 'package:elkaweer/resources/routes_manager.dart';
@@ -31,13 +31,7 @@ void main() async {
           ),
           ChangeNotifierProvider(create: (_) => NewsProvider()),
           ChangeNotifierProvider(create: (_) => MatchesProvider()),
-          ChangeNotifierProvider(
-            create: (_) {
-              final transfersProvider = TransfersProvider();
-              transfersProvider.fetchTransfers();
-              return transfersProvider;
-            },
-          ),
+          ChangeNotifierProvider(create: (_) => TransferProvider()),
           ChangeNotifierProvider(create: (_) => LanguageProvider()),
         ],
         child: EasyLocalization(

@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:elkaweer/models/transfer_model.dart';
 
-class TransfersProvider extends ChangeNotifier {
-  bool isLoading = true;
-  final List<TransferData> _transfers = [
-    TransferData(playerName: "Lionel Messi", newClub: "Inter Miami", transferFee: "Free"),
-    TransferData(playerName: "Jude Bellingham", newClub: "Real Madrid", transferFee: "€103M"),
-    TransferData(playerName: "Harry Kane", newClub: "Bayern Munich", transferFee: "€100M"),
-  ];
+import 'package:elkaweer/api/transfers_api_service.dart';
 
-  List<TransferData> get transfers => _transfers;
+import '../models/transfer_model.dart';
 
-  TransfersProvider() {
-    fetchTransfers();
-  }
+class TransferProvider with ChangeNotifier {
+  List<Transfer> _transfers = [];
+  bool _isLoading = false;
 
-  void fetchTransfers() {
-    Future.delayed(const Duration(seconds: 1), () {
-      isLoading = false;
-      notifyListeners();
+  List<Transfer> get transfers => _transfers;
+  bool get isLoading => _isLoading;
+
+  final TransfersApiService _apiService = TransfersApiService();
+
+  Future<void> loadTransfers(int teamId) async {
+    _isLoading = true;
+    notifyListeners();
+
+    _transfers = await _apiService.fetchTransfers(teamId);
+
+    _transfers.sort((a, b) {
+      DateTime dateA = DateTime.tryParse(a.transferDate) ?? DateTime(2000);
+      DateTime dateB = DateTime.tryParse(b.transferDate) ?? DateTime(2000);
+      return dateB.compareTo(dateA);
     });
+
+    _isLoading = false;
+    notifyListeners();
   }
 }
